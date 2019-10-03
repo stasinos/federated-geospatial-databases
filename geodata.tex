@@ -29,7 +29,7 @@
 
 	\term{Geospatial data} is data about objects, events, or phenomena that have 
 	a location on the surface of the earth \citep{Stock}. The location may be 
-	static in the short-term (e.g., the location of a road, an earthquake event, children living in poverty), or dynamic (e.g., a moving vehicle or pedestrian, even the spread of an infectious disease). Geospatial data combines location information (usually coordinates on the earth), attribute information (the characteristics of the object, event, or phenomena concerned), and often also temporal information (the time or life span at which the location and attributes exist). The terms spatial and geospatial are often used interchangeably.
+	static in the short-term (e.g., the location of a road, an earthquake event, children living in poverty), or dynamic (e.g., a moving vehicle or pedestrian, even the spread of an infectious disease). Geospatial data combines location information (usually coordinates on the earth), attribute information (the characteristics of the object, event, or phenomena concerned), and often also temporal information (the time or life span at which the location and attributes exist). The terms geographical, spatial and geospatial are often used interchangeably.
 	\\
 
 	A \term{geographic information system (\acr{gis})} is a system designed to capture, store, manipulate, analyze, manage, and present all types of geographical data. The key word to this technology is Geography - this means that some portion of the data is geospatial.
@@ -38,7 +38,6 @@
 
 
 
-	\todo[size={{\scriptsize}}]{Abstract.. change it}
 	The integration of heterogeneous geospatial data offers possibilities to manually and automatically derive new information, which are not available when using only a single data source \citep{Butenuth}. Furthermore, it allows for a consistent representation and the propagation of updates from one data set to the other. However, different acquisition methods, data schemata and updating cycles of the content can lead to discrepancies in geometric and thematic accuracy and correctness which hamper the combined integration. To overcome these difficulties, appropriate methods for the integration and harmonization of data from different sources and of different types are needed.
 	\\
 
@@ -66,22 +65,32 @@
 	\citep{Butenuth}: Beside the general benefits of data integration, there are a lot of practical applications of integration. One is the verification and update of data sets: in order to check the currency and correctness of a data set, a second or third data set can be used to check the information. The task can be extended to provide also update capability: whenever current information is available in one data set, it can be employed to update the other sets, based on the known relations between the data sets and the known link structure between corresponding objects. Furthermore, integration can be used to provide prior information for a dedicated analysis using one data set: for example if a road network has to be updated using aerial imagery, information from existing road data can be used to partition the space and identify potential areas for new roads. Similarly, land use classifications from imagery can be used as input for a more detailed inspection of dedicated areas of interest. 
 	\\
 
-	\todo[size={{\scriptsize}}]{Probably not. See figure 2.}
-	\citep{Jian}: A federated database can accept different heterogeneoussystems and integrate them into higher level systems. They can be divided between two basicforms of interaction (see Fig. 2) : Cooperation. Cooperation means several systems or components use the same common datasource. Coordination. In case of coordination, the desired data will be copied among these systems orcomponents.
+	\todo[size={{\scriptsize}}]{??? See figure 2.}
+	\citep{Jian}: A federated database can accept different heterogeneous systems and integrate them into higher level systems. They can be divided between two basic forms of interaction, cooperation and coordination. Cooperation means several systems or components use the same common datasource. While in case of coordination, the desired data will be copied among these systems or components.
 	\\
 
-	\citep{Jian}: Some times users want to accessdata from various distinct databases. They used tocreate a new database and migrate all data fromother databases to the new database. This is an ap-proach of re-enginneer databases. But the methodhas its obvious limitations.
-	\\\\
-	\citep{Jian}: The Open Geodata Interop-erability Specification (OGIS) provides a frame-work to create software that enables users to ac-cess and process geographic data from a variety ofsources across a generic computing interfaceCom-ponent Object Model (COM) is software architec-ture. It allows the components that made by differ-ent software vendors to be combined into an inte-grated application
+	\citep{Jian}: Some times users want to access data from various distinct databases. They used to create a new database and migrate all data from other databases to the new database. This is an approach of re-enginneer databases. But the method has its obvious limitations.
 	\\
 
-	\citep{Butenuth}:Federated databases allow for integrating heterogeneous databases via a global schema, and they provide a unified database interface for global applications. Local applications remain unchanged, as they still access the databases via the local schemata.
+	\citep{Butenuth}: Federated databases allow for integrating heterogeneous databases via a global schema, and they provide a unified database interface for global applications. Local applications remain unchanged, as they still access the databases via the local schemata.
 	\\
 
 	Federated database systems have been extensively researched \citep{Litwin, Sheth}.
 	\\
 
-	Interoperability among traditional geographical information systems requires solving two major problems \citep{Gong}. The former is how to access geospatial data distributed on the network. And the latter how to allow cooperation between existing heterogeneous geospatial databases.
+	\todo[size={{\scriptsize}}]{Keep fig. 4 ?}
+	\citep{Butenuth}: (Given the structural adaptation of the different data sets, the federated database can be enabled to incorporate correspondences through so called links. ) In the context of federated databases the process of identifying objects is usually restricted to one-to-one correspondences often based on simple attribute matching (like, e.g. the ISBN of books). Identifying geospatial objects, however, does not only involve simple one-to-one-relationships, as real-world objects can be represented differently in different maps. Fig. 4 shows an instance of three and two objects, respectively, e.g. a section of a water body segmented in two different ways. To represent these many-to-many correspondences, the database stores attributed one-to-one links between aggregated objects (denoted by dashed lines in Fig. 4).
+	\\
+
+	\citet{Butenuth} developed a mechanism for the semantic description of geospatial objects, in order to provide the applications with a model independent and uniform method to access objects with respect to thematic attributes. In order to perform the integration of various types of geospatial data they describe two integration algorithms. The one is for matching and aligning heterogeneous vector data sets and a second one for integrating raster and vector data. Both algorithms are linked to a federated database as a base for any kind of complex data handling (it allows for automatic object matching and for managing n:m relationships).
+	\par
+	Vector and raster data are the two primary types of spatial data in \acr{gis} \citep{gisGeography}. The three basic symbol types for vector data are points (e.g. cities in maps), lines (e.g. rivers or roads in maps) and polygons (e.g. building footprints, agricultural fields). On the other hand raster data is made up of pixels (also referred to as grid cells). They are useful for storing data that varies continuously, e.g. elevation surfaces, temperature and lead contamination. Rasters are digital aerial photographs, imagery from satellites \citep{Butenuth}, digital pictures, scanned maps and so on.
+	\\
+
+	\citet{Jian} introduced a method based on \acr{opengis} \footnote{ \url{https://www.opengeospatial.org/}} and \acr{com} \footnote{ \url{https://docs.microsoft.com/en-us/windows/win32/com/com-technical-overview}} that integrates three databases, a vector database, a \term{digital elevation model (\acr{dem})} database and an image database. A \acr{dem} is a 3D representation of a terrain's surface – commonly of a planet (e.g. Earth), moon, or asteroid – created from a terrain's elevation data. \term{Open Geodata Interoperability Specification (\acr{opengis})} provides a framework to create software that enables users to access and process geographic data from a variety of sources across a generic computing interface And \term{Component Object Model (\acr{com})} is a software architecture that allows the components that made by different software vendors to be combined into an integrated application. 
+	\\
+
+	Interoperability among traditional geographical information systems requires solving two major problems \citep{Gong}. The former is how to access geospatial data distributed on the network. And the latter is how to allow cooperation between existing heterogeneous geospatial databases.
 	\\
 
 	\renewcommand{\bibname}{References}
