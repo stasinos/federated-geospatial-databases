@@ -10,6 +10,19 @@
 
 \usepackage{indentfirst}	% indent the first paragraph of a section
 
+%
+% Configure chapter/section/subsection etc printing and alignment
+%
+\usepackage{titlesec}
+
+\titleformat{\chapter}[block] % shape
+{\bfseries\large\centering} % format
+{\thechapter.}{16pt}{\large} % label
+\titlespacing{\chapter}{12pc}{0cm}{1pc}
+
+\titleformat{\section}[block]
+{\normalfont\bfseries}
+{\thesection.}{14pt}{}
 
 \newcommand{\term}{\textit}
 \newcommand{\acr}{\MakeUppercase}
@@ -24,13 +37,15 @@
 		\end{center}
 	\end{titlepage}
 
+	{
+		\hypersetup{linkcolor=black}
+		\tableofcontents
+		\thispagestyle{empty}
+	}
+	
+	\chapter{Introduction}
+	\label{sec:intro}
 
-
-	The integration of heterogeneous geospatial data offers possibilities to manually and automatically derive new information, which are not available when using only a single data source \citep{Butenuth}. Furthermore, it allows for a consistent representation and the propagation of updates from one data set to the other. However, different acquisition methods, data schemata and updating cycles of the content can lead to discrepancies in geometric and thematic accuracy and correctness which hamper the combined integration. To overcome these difficulties, appropriate methods for the integration and harmonization of data from different sources and of different types are needed.
-	\\
-
-	The major challenge in building a federation of these autonomous and heterogeneous databases is system integration \citep{Malik}.
-	\\
 
 	\todo[size={{\scriptsize}}]{Diversities in datasets! How to overcome this problem?}
 	A \term{federated database} (also known as \term{integrated database} 
@@ -53,36 +68,29 @@
 	static in the short-term (e.g., the location of a road, an earthquake event, children living in poverty), or dynamic (e.g., a moving vehicle or pedestrian, even the spread of an infectious disease). Geospatial data combines location information (usually coordinates on the earth), attribute information (the characteristics of the object, event, or phenomena concerned), and often also temporal information (the time or life span at which the location and attributes exist). The terms geographical, spatial and geospatial are often used interchangeably.
 	\\
 
-	A \term{geographic information system (\acr{gis})} is a system designed to capture, store, manipulate, analyze, manage, and present all types of geographical data. The key word to this technology is Geography - this means that some portion of the data is geospatial.
+	A \term{geographic information system (\acr{gis})} is a system designed to capture, store, manipulate, analyze, manage, and present all types of geographical data. The key word to this technology is Geography – this means that some portion of the data is geospatial. Interoperability of \acr{gis} is the ability to access spatial data and associated services in a distributed and heterogeneous processing environment \citep{Gong}. 
 	\\
 
-
-
-	\citep{Malik}: An archive is naturally reluctant to forsake its autonomy --- even if it is not, complete restructuring can be prohibitively expensive. Federated database architecture is designed to maintain autonomy and yet accomplish federated tasks.
-	\\
 
 	\citep{Butenuth}: Obviously, true integration is much more than just overlaying data in a geographic information system (GIS), as it must make the relations between the individual objects in the different data sets explicit. Technically, it also means more than information fusion, if the original data sets should still be available to be used in their own right. This is a common requirement today, as different agencies are interested in maintaining control over the data they are responsible for and they have the knowledge to maintain the data properly.
 	\\
 
-	\citep{Butenuth}: Beside the general benefits of data integration, there are a lot of practical applications of integration. One is the verification and update of data sets: in order to check the currency and correctness of a data set, a second or third data set can be used to check the information. The task can be extended to provide also update capability: whenever current information is available in one data set, it can be employed to update the other sets, based on the known relations between the data sets and the known link structure between corresponding objects. Furthermore, integration can be used to provide prior information for a dedicated analysis using one data set: for example if a road network has to be updated using aerial imagery, information from existing road data can be used to partition the space and identify potential areas for new roads. Similarly, land use classifications from imagery can be used as input for a more detailed inspection of dedicated areas of interest. 
-	\\
-
-	\todo[size={{\scriptsize}}]{??? See figure 2.}
-	\citep{Jian}: A federated database can accept different heterogeneous systems and integrate them into higher level systems. They can be divided between two basic forms of interaction, cooperation and coordination. Cooperation means several systems or components use the same common datasource. While in case of coordination, the desired data will be copied among these systems or components.
-	\\
-
-	\citep{Jian}: Some times users want to access data from various distinct databases. They used to create a new database and migrate all data from other databases to the new database. This is an approach of re-enginneer databases. But the method has its obvious limitations.
-	\\
-
-	\citep{Butenuth}: Federated databases allow for integrating heterogeneous databases via a global schema, and they provide a unified database interface for global applications. Local applications remain unchanged, as they still access the databases via the local schemata.
-	\\
-
-	Federated database systems have been extensively researched \citep{Litwin, Sheth}.
-	\\
 
 	\todo[size={{\scriptsize}}]{Keep fig. 4 ?}
 	\citep{Butenuth}: (Given the structural adaptation of the different data sets, the federated database can be enabled to incorporate correspondences through so called links. ) In the context of federated databases the process of identifying objects is usually restricted to one-to-one correspondences often based on simple attribute matching (like, e.g. the ISBN of books). Identifying geospatial objects, however, does not only involve simple one-to-one-relationships, as real-world objects can be represented differently in different maps. Fig. 4 shows an instance of three and two objects, respectively, e.g. a section of a water body segmented in two different ways. To represent these many-to-many correspondences, the database stores attributed one-to-one links between aggregated objects (denoted by dashed lines in Fig. 4).
 	\\
+
+
+	The integration of heterogeneous geospatial data offers possibilities to manually and automatically derive new information, which are not available when using only a single data source \citep{Butenuth}. Furthermore, it allows for a consistent representation and the propagation of updates from one data set to the other. However, different acquisition methods, data schemata and updating cycles of the content can lead to discrepancies in geometric and thematic accuracy and correctness which hamper the combined integration. To overcome these difficulties, appropriate methods for the integration and harmonization of data from different sources and of different types are needed.
+	\\
+
+	The major challenge in building a federation of these autonomous and heterogeneous databases is system integration \citep{Malik}.
+	\\
+
+
+
+	\chapter{Federated Geospatial Databases}
+	\label{sec:fed_geodata}
 
 	\citet{Butenuth} developed a mechanism for the semantic description of 
 	geospatial objects, in order to provide the applications with a model 
@@ -130,8 +138,42 @@
 	in making discoveries faster and easier.
 	\\
 
+	There is not much work done on the merging of federated systems and geospatial databases.
 	Interoperability among traditional geographical information systems requires solving two major problems \citep{Gong}. The former is how to access geospatial data distributed on the network. And the latter is how to allow cooperation between existing heterogeneous geospatial databases.
+	\par
+	The first problem is dealt with by using networking techniques based on the client/server paradigm. For example a distributed object environment, like CORBA can be used to provide interconnectivity among several geographical information systems.
+	\par
+	The second problem has recently been the focus of extensive researches in the field of databases. Several solutions have been identified: Schema integration based solutions aim to combine all information into a single global schema. Canonical data-model based solutions hide heterogeneity and provide a good framework for multi-model translations. Multi-database language based solutions allow users to query several information sources at the same time.
+	\\ 
+
+	\citep{Gong}: In order to solve problems, we often need the cooperation of many spatial databases, even if there are more complex spatial relationship and diversity between the existing spatial data models.
 	\\
+
+
+
+	\chapter{Federated Systems}
+	\label{sec:fed_sys}
+	
+	\todo[size={{\scriptsize}}]{??? See figure 2.}
+	\citep{Jian}: A federated database can accept different heterogeneous systems and integrate them into higher level systems. They can be divided between two basic forms of interaction, cooperation and coordination. Cooperation means several systems or components use the same common datasource. While in case of coordination, the desired data will be copied among these systems or components.
+	\\
+
+	\citep{Jian}: Some times users want to access data from various distinct databases. They used to create a new database and migrate all data from other databases to the new database. This is an approach of re-enginneer databases. But the method has its obvious limitations.
+	\\
+
+	\citep{Butenuth}: Federated databases allow for integrating heterogeneous databases via a global schema, and they provide a unified database interface for global applications. Local applications remain unchanged, as they still access the databases via the local schemata.
+	\\
+
+	Federated database systems have been extensively researched \citep{Litwin, Sheth}.
+	\\
+
+	\citep{Malik}: An archive is naturally reluctant to forsake its autonomy – even if it is not, complete restructuring can be prohibitively expensive. Federated database architecture is designed to maintain autonomy and yet accomplish federated tasks.
+	\\
+
+	\citep{Butenuth}: Beside the general benefits of data integration, there are a lot of practical applications of integration. One is the verification and update of data sets: in order to check the currency and correctness of a data set, a second or third data set can be used to check the information. The task can be extended to provide also update capability: whenever current information is available in one data set, it can be employed to update the other sets, based on the known relations between the data sets and the known link structure between corresponding objects. Furthermore, integration can be used to provide prior information for a dedicated analysis using one data set: for example if a road network has to be updated using aerial imagery, information from existing road data can be used to partition the space and identify potential areas for new roads. Similarly, land use classifications from imagery can be used as input for a more detailed inspection of dedicated areas of interest. 
+	\\
+
+
 
 	\renewcommand{\bibname}{References}
 	\bibliography{ref}
