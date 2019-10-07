@@ -25,6 +25,7 @@
 {\thesection.}{14pt}{}
 
 \newcommand{\term}{\textit}
+\renewcommand{\emph}{\underline}
 \newcommand{\acr}{\MakeUppercase}
 
 
@@ -154,6 +155,28 @@
 	\chapter{Federated Systems}
 	\label{sec:fed_sys}
 	
+	To the best of our knowledge the term federated database system was 
+	introduced by \citet{Hammer}. They defined federated databases as a middle 
+	road that should be followed between the rigid centralization of 
+	conventional database systems and the anarchy of completely diffused and 
+	decentralized files.
+	\\
+
+	Federated database systems have been extensively researched \citep{Sheth, Litwin}.
+	Systems consisting of multiple database systems may be characterized along three orthogonal dimensions: distribution, heterogeneity, and autonomy \citep{Sheth}. 
+	\begin{itemize}
+		\item \emph{Distribution}: Data may be distributed among multiple databases. These databases may be stored on a single computer system or on multiple computer systems. They can be co-located or geographically distributed but interconnected by a communication system. Data may be distributed among multiple databases in different ways. Multiple copies of some or all of the data may be maintained. These copies need not be identically structured.
+		\item \emph{Heterogeneity}: The types of heterogeneities in the database systems can be divided into those due to the differences in hardware or system software and those due to the differences in the semantics of data. The differences in software refer to differences in structure, constrains or query languages. Detecting semantic heterogeneity is a much more difficult problem. It occurs when there is a disagreement about the definition, interpretation, or intended use of the same or related data (e.g. different precision of the data values). 
+		\item \emph{Autonomy}: Database systems are often under separate and independent control. Those who control a autonomous database are often willing to let others share the data only if they retain control. This autonomy refers to design, communication, execution and association. 
+		\begin{itemize}
+			\item \emph{Design autonomy} refers to the ability of a component database system to choose its own design with respect to the data being managed, their representation, semantic interpretation, constraints etc. Consequently, heterogeneity in an federated database system is primarily caused by design autonomy among component database systems. 
+			\item \emph{Communication autonomy} refers to the ability of a component database system to decide when and how it responds to a request from another component. 
+			\todo[size={{\scriptsize}}]{Execution and Association}
+			\item \emph{Execution autonomy} refers to its the ability execute local operations without interference from external operations, and to decide if and when to execute external operations. 
+		\end{itemize}
+	\end{itemize} 
+	
+
 	\todo[size={{\scriptsize}}]{??? See figure 2.}
 	\citep{Jian}: A federated database can accept different heterogeneous systems and integrate them into higher level systems. They can be divided between two basic forms of interaction, cooperation and coordination. Cooperation means several systems or components use the same common datasource. While in case of coordination, the desired data will be copied among these systems or components.
 	\\
@@ -164,14 +187,12 @@
 	\citep{Butenuth}: Federated databases allow for integrating heterogeneous databases via a global schema, and they provide a unified database interface for global applications. Local applications remain unchanged, as they still access the databases via the local schemata.
 	\\
 
-	Federated database systems have been extensively researched \citep{Litwin, Sheth}.
-	\\
-
 	\citep{Malik}: An archive is naturally reluctant to forsake its autonomy – even if it is not, complete restructuring can be prohibitively expensive. Federated database architecture is designed to maintain autonomy and yet accomplish federated tasks.
 	\\
 
 	\citep{Butenuth}: Beside the general benefits of data integration, there are a lot of practical applications of integration. One is the verification and update of data sets: in order to check the currency and correctness of a data set, a second or third data set can be used to check the information. The task can be extended to provide also update capability: whenever current information is available in one data set, it can be employed to update the other sets, based on the known relations between the data sets and the known link structure between corresponding objects. Furthermore, integration can be used to provide prior information for a dedicated analysis using one data set: for example if a road network has to be updated using aerial imagery, information from existing road data can be used to partition the space and identify potential areas for new roads. Similarly, land use classifications from imagery can be used as input for a more detailed inspection of dedicated areas of interest. 
 	\\
+
 
 
 
