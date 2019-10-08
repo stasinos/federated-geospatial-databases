@@ -174,17 +174,37 @@
 	\\
 
 	Federated database systems have been extensively researched \citep{Sheth, Litwin}.
-	Systems consisting of multiple database systems may be characterized along three orthogonal dimensions: distribution, heterogeneity, and autonomy \citep{Sheth}. 
+	Systems consisting of multiple database systems may be characterized along 
+	three orthogonal dimensions: distribution, heterogeneity, and autonomy 
+	\citep{Sheth}. 
 	\begin{itemize}
-		\item \term{Distribution}: Data may be distributed among multiple databases. These databases may be stored on a single computer system or on multiple computer systems. They can be co-located or geographically distributed but interconnected by a communication system. Data may be distributed among multiple databases in different ways. Multiple copies of some or all of the data may be maintained. These copies need not be identically structured.
-		\item \term{Heterogeneity}: The types of heterogeneities in the database systems can be divided into those due to the differences in hardware or system software and those due to the differences in the semantics of data. The differences in software refer to differences in structure, constrains or query languages. Detecting semantic heterogeneity is a much more difficult problem. It occurs when there is a disagreement about the definition, interpretation, or intended use of the same or related data (e.g. different precision of the data values). 
-		\item \term{Autonomy}: Database systems are often under separate and independent control. Those who control a autonomous database are often willing to let others share the data only if they retain control. This autonomy refers to design, communication and execution \citep{Sheth, Heimbigner}. More concrete, each component database system determines how it will view and combine existing data. It decides when and how it responds to a request from another component. And it must not be forced to perform an activity for another component. Since the federation is a dynamic entity, components must be able to dynamically enter or leave the federation. Consequently, heterogeneity in an federated database system is primarily caused by design autonomy among component database systems. 
-		
-		\begin{itemize}
-			\item \sub{Design autonomy} refers to the ability of a component database system to choose its own design with respect to the data being managed, their representation, semantic interpretation, constraints etc. Also, design autonomy implies the components ability to decide whether and how much to share its functionality and resources. This includes its ability to associate or disassociate itself from one or more federations. 
-			\item \sub{Communication autonomy} refers to the ability of a component database system to decide when and how it responds to a request from another component. 
-			\item \sub{Execution autonomy} refers to its ability to execute local operations without interference from external operations, and to decide if and when to execute external operations. 
-		\end{itemize}
+		\item \term{Distribution}: Data may be distributed among multiple 
+		databases. These databases may be stored on a single computer system or 
+		on multiple computer systems. They can be co-located or geographically 
+		distributed but interconnected by a communication system. Data may be 
+		distributed among multiple databases in different ways. Multiple copies 
+		of some or all of the data may be maintained. These copies need not be 
+		identically structured.
+		\item \term{Heterogeneity}: The types of heterogeneities in the 
+		database systems can be divided into those due to the differences in 
+		hardware or system software and those due to the differences in the 
+		semantics of data. The differences in software refer to differences in 
+		structure, constrains or query languages. Detecting semantic 
+		heterogeneity is a much more difficult problem. It occurs when there is 
+		a disagreement about the definition, interpretation, or intended use of 
+		the same or related data (e.g. different precision of the data values). 
+		\item \term{Autonomy}: Database systems are often under separate and 
+		independent control. Those who control a autonomous database are often 
+		willing to let others share the data only if they retain control. This 
+		autonomy refers to design, communication and execution 
+		\citep{Sheth, Heimbigner}. More concrete, each component database 
+		system determines how it will view and combine existing data. It 
+		decides when and how it responds to a request from another component. 
+		And it must not be forced to perform an activity for another component. 
+		Since the federation is a dynamic entity, components must be able to 
+		dynamically enter or leave the federation. Consequently, heterogeneity 
+		in an federated database system is primarily caused by design autonomy 
+		among component database systems. 
 	\end{itemize} 
 	
 
@@ -209,6 +229,13 @@
 	\section{Geospatial Data}
 	\label{sec:fed_geodata:geodata}
 
+	\todo[size={{\scriptsize}}]{1. geospatial data join, 2. Hofmann}
+	There were three methods to realize geospatial data sharing \citep{Shi}, namely, through data exchange mode, database direct access mode or database interoperability mode. 
+	\begin{itemize} 
+		\item \term{Data exchange mode} is not an optimal method. This data sharing is based on files, which can be only used for data integration but cannot realize real-time data sharing and data consistency. Each update is only reflected in its own database. Thus, the interoperation between two systems is not real interoperability. After data exchange, information of the original data cannot be expressed accurately because different data formats use different data models to describe the spatial objects. That way information loss occurs.
+		\item \term{Database direct access mode} allows users to obtain online data by accessing multiple databases using different data formats. If the data format of the host software changes, any software package for data integration must re-address the changed format and then update its own. But this is rarely announced when it happens, which makes it to difficult to access the changed format of the database for data integration. Direct access assumes sufficient understanding of the data format and data model in the spatial database at hand.
+		\item \term{Database interoperability mode}
+	\end{itemize} 
 
 	\renewcommand{\bibname}{References}
 	\bibliography{ref}
