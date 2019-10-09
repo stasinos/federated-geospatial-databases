@@ -229,12 +229,33 @@
 	\section{Geospatial Data}
 	\label{sec:fed_geodata:geodata}
 
-	\todo[size={{\scriptsize}}]{1. geospatial data join, 2. Hofmann}
-	There were three methods to realize geospatial data sharing \citep{Shi}, namely, through data exchange mode, database direct access mode or database interoperability mode. 
+	\todo[size={{\scriptsize}}]{1. geospatial data join (vs relational database), 2. Hofmann}
+	There were three methods to realize geospatial data sharing \citep{Shi}, 
+	namely, through data exchange mode, database direct access mode or database 
+	interoperability mode. 
 	\begin{itemize} 
-		\item \term{Data exchange mode} is not an optimal method. This data sharing is based on files, which can be only used for data integration but cannot realize real-time data sharing and data consistency. Each update is only reflected in its own database. Thus, the interoperation between two systems is not real interoperability. After data exchange, information of the original data cannot be expressed accurately because different data formats use different data models to describe the spatial objects. That way information loss occurs.
-		\item \term{Database direct access mode} allows users to obtain online data by accessing multiple databases using different data formats. If the data format of the host software changes, any software package for data integration must re-address the changed format and then update its own. But this is rarely announced when it happens, which makes it to difficult to access the changed format of the database for data integration. Direct access assumes sufficient understanding of the data format and data model in the spatial database at hand.
-		\item \term{Database interoperability mode}
+		\item \term{Data exchange mode} is not an optimal method. This data 
+		sharing is based on files, which can be only used for data integration 
+		but cannot realize real-time data sharing and data consistency. Each 
+		update is only reflected in its own database. Thus, the interoperation 
+		between two systems is not real interoperability. After data exchange, 
+		information of the original data cannot be expressed accurately because 
+		different data formats use different data models to describe the 
+		spatial objects. That way information loss occurs.
+		\item \term{Database direct access mode} allows users to obtain online 
+		data by accessing multiple databases using different data formats. If 
+		the data format of the host software changes, any software package for 
+		data integration must re-address the changed format and then update 
+		its own. But this is rarely announced when it happens, which makes it 
+		difficult to access the changed format of the database for data 
+		integration. As is obvious, direct access assumes sufficient 
+		understanding of the data format and data model in the spatial database 
+		at hand.
+		\item \term{Database interoperability mode} ... two levels?
+		\todo[size={{\scriptsize}}]{see Figure 4} 
+		The  first  level  is  the  API  based  on  COM  or  CORBA standards  or  the  interface  specification  of  SQL.  By constituting  the  common  interface  function  form  and parameters,   different   GIS   software   packages   can directly  access  each  other’s  database.  This  can  be implemented in two ways. The first is one in which the data   access   interface   of   a   GIS   directly   uses   the standardized interface function. The second way is one in which a GIS has defined its own data access function. So as to realize interoperability, it wraps a standardized interface  function  on  its  own  internal  data  access function. The  interface based  on API  uses  binary  data with  high  efficiency,  but  is  more  complicated  and difficult to implement. Figure 2 shows the relationship of specification interfaces for spatial data interoperability based on API. 
+
+		The  second  level  is  the  implementation  specification for spatial data interoperability based on Web Services. It  follows  the  specification  of  spatial  data  sharing models and interoperation based on XML. When these are    implemented    among    different    GIS    software packages,  the  internal  spatial  data  is  transformed  into the  data  flow  of  the  common  interface  description specification  (the  format  is  ASCII).  The  other  system will read the data flow to itself system.
 	\end{itemize} 
 
 	\renewcommand{\bibname}{References}
