@@ -69,9 +69,6 @@
 	static in the short-term (e.g., the location of a road, an earthquake event, children living in poverty), or dynamic (e.g., a moving vehicle or pedestrian, even the spread of an infectious disease). Geospatial data combines location information (usually coordinates on the earth), attribute information (the characteristics of the object, event, or phenomena concerned), and often also temporal information (the time or life span at which the location and attributes exist). The terms geographical, spatial and geospatial are often used interchangeably.
 	\\
 
-	A \term{geographic information system (\acr{gis})} is a system designed to capture, store, manipulate, analyze, manage, and present all types of geographical data. The key word to this technology is Geography – this means that some portion of the data is geospatial. Interoperability of \acr{gis} is the ability to access spatial data and associated services in a distributed and heterogeneous processing environment \citep{Gong}. 
-	\\
-
 
 	\citep{Butenuth}: Obviously, true integration is much more than just overlaying data in a geographic information system (GIS), as it must make the relations between the individual objects in the different data sets explicit. Technically, it also means more than information fusion, if the original data sets should still be available to be used in their own right. This is a common requirement today, as different agencies are interested in maintaining control over the data they are responsible for and they have the knowledge to maintain the data properly.
 	\\
@@ -104,7 +101,7 @@
 	allows for automatic object matching and for managing n:m relationships).
 	\par
 	Vector and raster data are the two primary types of spatial data in 
-	\acr{gis} \citep{gisGeography}. The three basic symbol types for vector 
+	\acr{gis} \citep{vectorVSraster}. The three basic symbol types for vector 
 	data are points (e.g. cities in maps), lines (e.g. rivers or roads in maps) 
 	and polygons (e.g. building footprints, agricultural fields). Polygon 
 	features are most commonly distinguished using either a thematic mapping 
@@ -229,6 +226,21 @@
 	\section{Geospatial Data}
 	\label{sec:fed_geodata:geodata}
 
+	\citet{Tomlinson} first coined the term \term{Geographic Information System 
+	(\acr{gis})}, in order to store and manipulate map-based land data. However, 
+	spatial analysis began in 1854 when choleara hit the city of London 
+	\citep{whatIsGis}. British physician John Snow began mapping outbreak 
+	locations to understand how the disease started.
+	\\
+
+	A \acr{gis} is a system designed to capture, store, manipulate, analyze, 
+	manage, and visualize (usually in a map) all types of geographical data. 
+	The key word to this technology is Geography – this means that some portion 
+	of the data is geospatial. Interoperability of \acr{gis} is the ability to 
+	access spatial data and associated services in a distributed and 
+	heterogeneous processing environment \citep{Gong}. 
+	\\
+
 	\todo[size={{\scriptsize}}]{1. geospatial data join (vs relational database), 2. Hofmann}
 	There were three methods to realize geospatial data sharing \citep{Shi}, 
 	namely, through data exchange mode, database direct access mode or database 
@@ -251,11 +263,14 @@
 		integration. As is obvious, direct access assumes sufficient 
 		understanding of the data format and data model in the spatial database 
 		at hand.
-		\item \term{Database interoperability mode} ... two levels?
-		\todo[size={{\scriptsize}}]{see Figure 4} 
-		The  first  level  is  the  API  based  on  COM  or  CORBA standards  or  the  interface  specification  of  SQL.  By constituting  the  common  interface  function  form  and parameters,   different   GIS   software   packages   can directly  access  each  other’s  database.  This  can  be implemented in two ways. The first is one in which the data   access   interface   of   a   GIS   directly   uses   the standardized interface function. The second way is one in which a GIS has defined its own data access function. So as to realize interoperability, it wraps a standardized interface  function  on  its  own  internal  data  access function. The  interface based  on API  uses  binary  data with  high  efficiency,  but  is  more  complicated  and difficult to implement. Figure 2 shows the relationship of specification interfaces for spatial data interoperability based on API. 
-
-		The  second  level  is  the  implementation  specification for spatial data interoperability based on Web Services. It  follows  the  specification  of  spatial  data  sharing models and interoperation based on XML. When these are    implemented    among    different    GIS    software packages,  the  internal  spatial  data  is  transformed  into the  data  flow  of  the  common  interface  description specification  (the  format  is  ASCII).  The  other  system will read the data flow to itself system.
+		\item \term{Database interoperability mode} is the database 
+		interoperability that can be achieved based on one of \acr{com}, 
+		\acr{corba} standards and the interface specification of \acr{sql}, or 
+		based on Web Services. According to the first case, by constituting the 
+		common interface function form and parameters, different \acr{gis} 
+		software packages can directly access each other’s database. The second 
+		case follows the specification of spatial data sharing models and 
+		interoperation based on \acr{xml}.
 	\end{itemize} 
 
 	\renewcommand{\bibname}{References}
